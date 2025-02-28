@@ -71,14 +71,14 @@ async function seedBookings() {
   const mockBookings = [
     {
       userEmail: userUsername,
-      court: "Bane 1",
+      court: "Court #1",
       date: "2025-03-01",
       time: "10:00",
       players: 2,
     },
     {
       userEmail: userUsername,
-      court: "Bane 2",
+      court: "Court #2",
       date: "2025-03-02",
       time: "12:00",
       players: 4,

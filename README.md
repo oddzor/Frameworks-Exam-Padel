@@ -82,12 +82,12 @@
 > If encountering issues with crudcrud connection, install plugins to allow CORS
 
 
-- **VITE_CRUDCRUD_URL**: `https://crudcrud.com/api/<your-unique-endpoint>` (NO "/" in the end of the url)
-- **VITE_ADMIN_USERNAME**: `admin`.
-- **VITE_ADMIN_PASSWORD**: `admin`
-- **VITE_MOCK_USERNAME**: `mock@user.com`
-- **VITE_MOCK_PASSWORD**: `password`
-- **VITE_SECRET_KEY**: `<your-secret-code>`
+- **VITE_CRUDCRUD_URL** = `"https://crudcrud.com/api/<your-unique-endpoint">` (NO "/" in the end of the url)
+- **VITE_ADMIN_USERNAME** = `"admin"`.
+- **VITE_ADMIN_PASSWORD** = `"admin"`
+- **VITE_MOCK_USERNAME** = `"mock@user.com"`
+- **VITE_MOCK_PASSWORD** = `"password"`
+- **VITE_SECRET_KEY** = `<"your-secret-code">`
 
 
 
@@ -140,7 +140,26 @@ Portal to send support requests, for example if you have gotten banned/cancelled
 
 ## **Testing**
 
-### Filler
+### <u>adminsAPI</u>
+
+- Ensures admins can fetch all bookings successfully.
+- Verifies that an admin can update a booking correctly.
+- Confirms that an admin can delete a booking without errors.
+
+
+### <u>authSlice</u>
+
+- Checks that the auth state initializes correctly.
+- Ensures that login updates the state (pending, success, failure).
+- Confirms that logout resets the state.
+- Verifies that restoring auth state works properly.
+
+### <u>bookingsAPI</u>
+
+- Ensures users can create a booking successfully.
+- Confirms that updating a booking works with a valid _id.
+- Tests that finding the next available time slot functions correctly.
+
 
 
 
