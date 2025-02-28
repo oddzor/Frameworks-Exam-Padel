@@ -172,23 +172,25 @@ Portal to send support requests, for example if you have gotten banned/cancelled
 
 ---
 
-## **Testing**
+## Testing
 
-### <ins>adminsAPI</ins>
+### Testing is done through vitest and run via either a vitest plugin for VSCode (or your IDE of choice) or `npm test`.
+
+#### <ins>adminsAPI</ins>
 
 - Ensures admins can fetch all bookings successfully.
 - Verifies that an admin can update a booking correctly.
 - Confirms that an admin can delete a booking without errors.
 
 
-### <ins>authSlice</ins>
+#### <ins>authSlice</ins>
 
 - Checks that the auth state initializes correctly.
 - Ensures that login updates the state (pending, success, failure).
 - Confirms that logout resets the state.
 - Verifies that restoring auth state works properly.
 
-### <ins>bookingsAPI</ins>
+#### <ins>bookingsAPI</ins>
 
 - Ensures users can create a booking successfully.
 - Confirms that updating a booking works with a valid _id.
