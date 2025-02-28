@@ -16,7 +16,9 @@ if (!process.env.VITE_MOCK_PASSWORD) {
 const userUsername = process.env.VITE_MOCK_USERNAME;
 const userPassword = process.env.VITE_MOCK_PASSWORD;
 
-async function collectionHasDocuments(collectionName: string): Promise<boolean> {
+async function collectionHasDocuments(
+  collectionName: string
+): Promise<boolean> {
   const url = `${BASE_URL}/${collectionName}`;
   try {
     const res = await fetch(url);
@@ -104,7 +106,7 @@ async function seedCourts() {
     { name: "Court #3", courtSize: 2 },
     { name: "Court #4", courtSize: 4 },
     { name: "Court #5", courtSize: 4 },
-    { name: "Court #6", courtSize: 2 }
+    { name: "Court #6", courtSize: 2 },
   ];
   for (const court of courts) {
     const res = await fetch(`${BASE_URL}/courts`, {
@@ -137,7 +139,11 @@ async function seedTickets() {
   if (res.ok) {
     console.log("Created mock ticket:", await res.json());
   } else {
-    console.error("Failed to create mock ticket:", mockTicket, await res.text());
+    console.error(
+      "Failed to create mock ticket:",
+      mockTicket,
+      await res.text()
+    );
   }
 }
 
@@ -148,7 +154,9 @@ async function main() {
     return;
   }
 
-  console.log("No documents in users/bookings/courts/tickets. Seeding data now...");
+  console.log(
+    "No documents in users/bookings/courts/tickets. Seeding data now..."
+  );
 
   console.log(`Creating mock user: "${userUsername}"...`);
   await seedUsers();

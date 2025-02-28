@@ -53,19 +53,30 @@ export default function FeatureSection() {
               <h3 className="text-xl font-semibold">About Padel</h3>
               {isExpanded(1) && (
                 <div className="mt-2 text-sm text-gray-200">
-               <p>Padel is a mix between Tennis and Squash. It's usually played in doubles on an enclosed court surrounded by walls of glass and metallic mash.</p>
-               <br></br>
-               <p>The court is one third of the size of a tennis court. The ball can bounce of any wall but can only hit the turf once before being returned.</p>
+                  <p>
+                    Padel is a mix between Tennis and Squash. It's usually
+                    played in doubles on an enclosed court surrounded by walls
+                    of glass and metallic mash.
+                  </p>
+                  <br></br>
+                  <p>
+                    The court is one third of the size of a tennis court. The
+                    ball can bounce of any wall but can only hit the turf once
+                    before being returned.
+                  </p>
                   <br />
-                  <p>Padel is considered one of the fastest growing sports in the world</p>
-                  
+                  <p>
+                    Padel is considered one of the fastest growing sports in the
+                    world
+                  </p>
+
                   <a
                     href="https://en.wikipedia.org/wiki/Padel"
                     target="_blank"
                     rel="noreferrer"
                     className="text-blue-400 hover:underline block mt-2"
                   >
-                     <hr className="my-2 border-gray-600 w-1/2" />
+                    <hr className="my-2 border-gray-600 w-1/2" />
                     Continue reading
                   </a>
                 </div>
@@ -93,9 +104,16 @@ export default function FeatureSection() {
               <h3 className="text-xl font-semibold">Read about Membership</h3>
               {isExpanded(2) && (
                 <div className="mt-2 text-sm text-gray-200">
-                 <p> Our memberships grant you free booking hours, discounts on gear from our partner shops, and more</p>
-                 <br></br>
-                 <p>We have 2 tiers of membership depending on your goals in the sport of padel</p>
+                  <p>
+                    {" "}
+                    Our memberships grant you free booking hours, discounts on
+                    gear from our partner shops, and more
+                  </p>
+                  <br></br>
+                  <p>
+                    We have 2 tiers of membership depending on your goals in the
+                    sport of padel
+                  </p>
                   <br />
                   <a
                     href="https://bestpadel.no/bli-medlem/"
@@ -131,9 +149,15 @@ export default function FeatureSection() {
               <h3 className="text-xl font-semibold">Students</h3>
               {isExpanded(3) && (
                 <div className="mt-2 text-sm text-gray-200">
-                  <p>We offer discounted membership plans and free coaching sessions for students.</p>
+                  <p>
+                    We offer discounted membership plans and free coaching
+                    sessions for students.
+                  </p>
                   <br />
-                  <p>With that in mind you should probably start studying at the premium location for future billionaires in Sandefjord</p>
+                  <p>
+                    With that in mind you should probably start studying at the
+                    premium location for future billionaires in Sandefjord
+                  </p>
                   <a
                     href="https://gokstadakademiet.no/campus/"
                     target="_blank"

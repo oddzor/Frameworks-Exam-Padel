@@ -30,7 +30,9 @@ export default function AdminUsersTable({
             <tr key={u._id} className="border-b border-gray-600 bg-gray-800">
               <td className="p-2 border border-gray-600">{u.email}</td>
               <td className="p-2 border border-gray-600">{u.role}</td>
-              <td className="p-2 border border-gray-600">{u.banned ? "Yes" : "No"}</td>
+              <td className="p-2 border border-gray-600">
+                {u.banned ? "Yes" : "No"}
+              </td>
               <td className="p-2 border border-gray-600">{u.banReason}</td>
               <td className="p-2 border border-gray-600 space-x-2">
                 {!u.banned && (

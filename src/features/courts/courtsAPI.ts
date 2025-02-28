@@ -15,7 +15,9 @@ export async function getAllCourts(): Promise<Court[]> {
   return response.json();
 }
 
-export async function createCourt(courtData: Omit<Court, "_id">): Promise<Court> {
+export async function createCourt(
+  courtData: Omit<Court, "_id">
+): Promise<Court> {
   const response = await fetch(COURTS_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

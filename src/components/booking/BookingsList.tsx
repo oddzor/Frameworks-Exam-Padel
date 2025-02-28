@@ -52,16 +52,28 @@ export default function BookingsList({
         <table className="w-full border-collapse">
           <thead className="bg-gray-700">
             <tr>
-              <th className="px-4 py-2 border border-gray-600 text-left">DATE</th>
-              <th className="px-4 py-2 border border-gray-600 text-left">TIME</th>
-              <th className="px-4 py-2 border border-gray-600 text-left">COURT</th>
-              <th className="px-4 py-2 border border-gray-600 text-left">PLAYERS</th>
-              <th className="px-4 py-2 border border-gray-600 text-left">ACTIONS</th>
+              <th className="px-4 py-2 border border-gray-600 text-left">
+                DATE
+              </th>
+              <th className="px-4 py-2 border border-gray-600 text-left">
+                TIME
+              </th>
+              <th className="px-4 py-2 border border-gray-600 text-left">
+                COURT
+              </th>
+              <th className="px-4 py-2 border border-gray-600 text-left">
+                PLAYERS
+              </th>
+              <th className="px-4 py-2 border border-gray-600 text-left">
+                ACTIONS
+              </th>
             </tr>
           </thead>
           <tbody>
             {sorted.map((bk) => {
-              const dateLabel = dayjs(bk.date, "YYYY-MM-DD").format("DD MMM YYYY");
+              const dateLabel = dayjs(bk.date, "YYYY-MM-DD").format(
+                "DD MMM YYYY"
+              );
               return (
                 <tr key={bk._id} className="border-b border-gray-600">
                   <td className="px-4 py-2">{dateLabel}</td>

@@ -37,7 +37,9 @@ export default function AdminPage() {
   const [cancelUser, setCancelUser] = useState<User | null>(null);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [tickets, setTickets] = useState<SupportTicket[]>([]);
-  const [currentTab, setCurrentTab] = useState<"bookings" | "users" | "tickets">("bookings");
+  const [currentTab, setCurrentTab] = useState<
+    "bookings" | "users" | "tickets"
+  >("bookings");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   useEffect(() => {
@@ -121,7 +123,9 @@ export default function AdminPage() {
   }
 
   async function handleDeleteBooking(id: string) {
-    const confirmRes = window.confirm("Are you sure you want to delete this booking?");
+    const confirmRes = window.confirm(
+      "Are you sure you want to delete this booking?"
+    );
     if (!confirmRes) return;
     try {
       await adminDeleteBooking(id);
@@ -142,7 +146,9 @@ export default function AdminPage() {
     if (!updated._id) return;
     try {
       const newBooking = await adminUpdateBooking(updated);
-      const replaced = allBookings.map((b) => (b._id === updated._id ? newBooking : b));
+      const replaced = allBookings.map((b) =>
+        b._id === updated._id ? newBooking : b
+      );
       setAllBookings(replaced);
       setFilteredBookings(replaced);
       setEditBooking(null);
@@ -158,7 +164,9 @@ export default function AdminPage() {
   }
 
   async function confirmCancelMemberWrapper(userId: string, reason: string) {
-    const confirmRes = window.confirm("Are you sure you want to cancel this membership?");
+    const confirmRes = window.confirm(
+      "Are you sure you want to cancel this membership?"
+    );
     if (!confirmRes) return;
     try {
       await adminConfirmCancelMember(userId, reason);
@@ -169,7 +177,9 @@ export default function AdminPage() {
   }
 
   async function handleDeleteUser(userId: string) {
-    const confirmRes = window.confirm("Are you sure you want to delete this user?");
+    const confirmRes = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
     if (!confirmRes) return;
     try {
       await adminDeleteUser(userId);
@@ -182,7 +192,9 @@ export default function AdminPage() {
   }
 
   async function handleRestartMember(userId: string) {
-    const confirmRes = window.confirm("Are you sure you want to restart this membership?");
+    const confirmRes = window.confirm(
+      "Are you sure you want to restart this membership?"
+    );
     if (!confirmRes) return;
     try {
       await adminRestartMember(userId);
@@ -193,7 +205,9 @@ export default function AdminPage() {
   }
 
   async function handleCloseTicket(ticketId: string) {
-    const confirmRes = window.confirm("Are you sure you want to close this ticket?");
+    const confirmRes = window.confirm(
+      "Are you sure you want to close this ticket?"
+    );
     if (!confirmRes) return;
     try {
       await adminCloseTicket(ticketId);
@@ -208,35 +222,47 @@ export default function AdminPage() {
   }
 
   async function handleCreateBooking(newBooking: Booking) {
-    const updatedList = [...allBookings, { ...newBooking, _id: crypto.randomUUID() }];
+    const updatedList = [
+      ...allBookings,
+      { ...newBooking, _id: crypto.randomUUID() },
+    ];
     setAllBookings(updatedList);
     setFilteredBookings(updatedList);
     setIsCreateModalOpen(false);
   }
 
   useEffect(() => {
-   if (!isLoggedIn || email !== "admin") {
-    setShowAlert(true);
+    if (!isLoggedIn || email !== "admin") {
+      setShowAlert(true);
+    }
+  }, [isLoggedIn, email]);
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+    navigate("/", { replace: true });
+  };
+
+  if (!isLoggedIn || email !== "admin") {
+    return (
+      <>
+        {showAlert && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-gray-800 text-white p-6 rounded shadow-md w-full max-w-sm">
+              <p className="mb-4">Access Denied: Not Admin</p>
+              <div className="flex justify-end">
+                <button
+                  onClick={handleCloseAlert}
+                  className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                >
+                  Return To Homepage
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    );
   }
-}, [isLoggedIn, email]);
-
-const handleCloseAlert = () => {
-  setShowAlert(false);
-  navigate("/", { replace: true });
-};
-
-if (!isLoggedIn || email !== "admin") {
-  return (
-    <>
-      {showAlert && (
-        <div className="alert-modal">
-          <p>Access Denied: Not Admin</p>
-          <button onClick={handleCloseAlert}>Return To Homepage</button>
-        </div>
-      )}
-    </>
-  );
-}
 
   return (
     <section className="bg-gray-900 text-white min-h-screen p-6">
@@ -271,7 +297,11 @@ if (!isLoggedIn || email !== "admin") {
       {currentTab === "bookings" && (
         <div className="bg-gray-800 p-4 rounded shadow">
           <div className="flex justify-between items-center mb-4">
-            <AdminFilters filters={filters} onFilterChange={handleFilterChange} onSearch={handleSearchFilters} />
+            <AdminFilters
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              onSearch={handleSearchFilters}
+            />
             <button
               onClick={handleCreateNewBookingClick}
               className="bg-green-600 px-4 py-2 rounded hover:bg-green-500 text-white"
@@ -279,7 +309,11 @@ if (!isLoggedIn || email !== "admin") {
               Create Booking
             </button>
           </div>
-          <AdminBookingsTable bookings={filteredBookings} onEdit={handleEdit} onDelete={handleDeleteBooking} />
+          <AdminBookingsTable
+            bookings={filteredBookings}
+            onEdit={handleEdit}
+            onDelete={handleDeleteBooking}
+          />
         </div>
       )}
 
@@ -293,7 +327,10 @@ if (!isLoggedIn || email !== "admin") {
               onChange={handleUserSearchChange}
               className="border px-2 py-1 mr-2 rounded bg-gray-700 text-white"
             />
-            <button onClick={handleUserSearch} className="bg-blue-600 text-white px-3 py-1 rounded">
+            <button
+              onClick={handleUserSearch}
+              className="bg-blue-600 text-white px-3 py-1 rounded"
+            >
               Search
             </button>
           </div>
@@ -308,7 +345,10 @@ if (!isLoggedIn || email !== "admin") {
 
       {currentTab === "tickets" && (
         <div className="bg-gray-800 p-4 rounded shadow">
-          <AdminTicketsTable tickets={tickets} onCloseTicket={handleCloseTicket} />
+          <AdminTicketsTable
+            tickets={tickets}
+            onCloseTicket={handleCloseTicket}
+          />
         </div>
       )}
 

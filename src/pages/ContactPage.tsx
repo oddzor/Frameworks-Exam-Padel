@@ -34,7 +34,7 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="py-20"> 
+    <section className="py-20">
       <div className="container mx-auto px-4 flex items-start justify-center">
         {!submitted ? (
           <form
@@ -43,7 +43,9 @@ export default function ContactPage() {
           >
             <h2 className="text-2xl font-bold mb-4">Contact Support</h2>
             <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Your Email</label>
+              <label className="block text-sm font-semibold mb-1">
+                Your Email
+              </label>
               <input
                 type="email"
                 className="border border-gray-500 rounded w-full px-3 py-2 bg-gray-700 text-white"
@@ -52,7 +54,9 @@ export default function ContactPage() {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Subject</label>
+              <label className="block text-sm font-semibold mb-1">
+                Subject
+              </label>
               <input
                 type="text"
                 className="border border-gray-500 rounded w-full px-3 py-2 bg-gray-700 text-white"
@@ -61,7 +65,9 @@ export default function ContactPage() {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Message</label>
+              <label className="block text-sm font-semibold mb-1">
+                Message
+              </label>
               <textarea
                 className="border border-gray-500 rounded w-full px-3 py-2 bg-gray-700 text-white h-24"
                 value={message}

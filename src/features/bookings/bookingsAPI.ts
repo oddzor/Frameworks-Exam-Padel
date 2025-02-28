@@ -15,7 +15,10 @@ export async function getAllBookings(): Promise<Booking[]> {
   return res.json();
 }
 
-export async function fetchAllBookingsForUser(email: string, isLoggedIn: boolean) {
+export async function fetchAllBookingsForUser(
+  email: string,
+  isLoggedIn: boolean
+) {
   const all = await getAllBookings();
   if (email && isLoggedIn) {
     const userOnly = all.filter(
@@ -26,14 +29,10 @@ export async function fetchAllBookingsForUser(email: string, isLoggedIn: boolean
   return { allBookings: all, userBookings: [] };
 }
 
-/**
- * Internal helper that decides create vs update
- */
 async function createOrUpdateBooking(booking: Booking): Promise<Booking> {
   const { _id, ...body } = booking;
 
   if (!_id) {
-    // CREATE
     const res = await fetch(BOOKINGS_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -42,10 +41,8 @@ async function createOrUpdateBooking(booking: Booking): Promise<Booking> {
     if (!res.ok) {
       throw new Error("Failed to create booking");
     }
-    // Return the newly created booking
     return await res.json();
   } else {
-    // UPDATE
     const res = await fetch(`${BOOKINGS_ENDPOINT}/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -54,17 +51,10 @@ async function createOrUpdateBooking(booking: Booking): Promise<Booking> {
     if (!res.ok) {
       throw new Error("Failed to update booking");
     }
-    // You can choose to return the updated booking from the response,
-    // but many endpoints just return an empty 200. If needed, you can:
-    // return await res.json();
-    // For now, reattach _id to confirm
     return { ...booking };
   }
 }
 
-/**
- * Exported createBooking: calls createOrUpdateBooking without _id
- */
 export async function createBooking(booking: Booking): Promise<Booking> {
   if (booking._id) {
     console.warn("createBooking called with an _id, ignoring _id for creation");
@@ -73,9 +63,6 @@ export async function createBooking(booking: Booking): Promise<Booking> {
   return createOrUpdateBooking(booking);
 }
 
-/**
- * Exported updateBooking: calls createOrUpdateBooking with an _id
- */
 export async function updateBooking(updated: Booking): Promise<Booking> {
   if (!updated._id) {
     throw new Error("updateBooking requires a booking with _id");
@@ -84,15 +71,14 @@ export async function updateBooking(updated: Booking): Promise<Booking> {
 }
 
 export async function deleteBooking(bookingId: string): Promise<void> {
-  const res = await fetch(`${BOOKINGS_ENDPOINT}/${bookingId}`, { method: "DELETE" });
+  const res = await fetch(`${BOOKINGS_ENDPOINT}/${bookingId}`, {
+    method: "DELETE",
+  });
   if (!res.ok) {
     throw new Error("Failed to delete booking");
   }
 }
 
-/**
- * OPTIONAL: if you still use “findNextAvailableTime” logic
- */
 export function findNextAvailableTime(
   allBookings: Booking[],
   dateStr: string,

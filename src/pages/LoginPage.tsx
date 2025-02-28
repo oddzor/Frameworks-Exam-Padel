@@ -15,8 +15,14 @@ export default function LoginPage() {
   const [searchParams] = useSearchParams();
   const modeParam = searchParams.get("mode");
   const [isRegister, setIsRegister] = useState(modeParam === "register");
-  const [loginInput, setLoginInput] = useState({ emailOrAdmin: "", password: "" });
-  const [registerInput, setRegisterInput] = useState({ email: "", password: "" });
+  const [loginInput, setLoginInput] = useState({
+    emailOrAdmin: "",
+    password: "",
+  });
+  const [registerInput, setRegisterInput] = useState({
+    email: "",
+    password: "",
+  });
   const [showBannedModal, setShowBannedModal] = useState(false);
   const [banReason, setBanReason] = useState("");
 
@@ -152,7 +158,10 @@ export default function LoginPage() {
         </div>
       </div>
       {showBannedModal && (
-        <BannedModal reason={banReason} onClose={() => setShowBannedModal(false)} />
+        <BannedModal
+          reason={banReason}
+          onClose={() => setShowBannedModal(false)}
+        />
       )}
     </section>
   );

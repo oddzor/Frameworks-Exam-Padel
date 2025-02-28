@@ -11,8 +11,12 @@ export default function AdminTicketsTable({
   tickets,
   onCloseTicket,
 }: AdminTicketsTableProps) {
-  const [expandedOpenTicketId, setExpandedOpenTicketId] = useState<string | null>(null);
-  const [expandedClosedTicketId, setExpandedClosedTicketId] = useState<string | null>(null);
+  const [expandedOpenTicketId, setExpandedOpenTicketId] = useState<
+    string | null
+  >(null);
+  const [expandedClosedTicketId, setExpandedClosedTicketId] = useState<
+    string | null
+  >(null);
   const [showClosedTable, setShowClosedTable] = useState(false);
 
   const openTickets = tickets.filter((t) => t.status === "open");
@@ -58,7 +62,9 @@ export default function AdminTicketsTable({
                       onClick={() => t._id && handleOpenRowClick(t._id)}
                       className="bg-gray-800 hover:bg-gray-700 cursor-pointer"
                     >
-                      <td className="p-2 border border-gray-600">{t.userEmail}</td>
+                      <td className="p-2 border border-gray-600">
+                        {t.userEmail}
+                      </td>
                       <td className="p-2 border border-gray-600 flex items-center space-x-2">
                         <span>{t.subject}</span>
                         <MdExpandMore
@@ -132,7 +138,9 @@ export default function AdminTicketsTable({
                         onClick={() => t._id && handleClosedRowClick(t._id)}
                         className="bg-gray-800 hover:bg-gray-700 cursor-pointer"
                       >
-                        <td className="p-2 border border-gray-600">{t.userEmail}</td>
+                        <td className="p-2 border border-gray-600">
+                          {t.userEmail}
+                        </td>
                         <td className="p-2 border border-gray-600 flex items-center space-x-2">
                           <span>{t.subject}</span>
                           <MdExpandMore
@@ -141,7 +149,9 @@ export default function AdminTicketsTable({
                             }`}
                           />
                         </td>
-                        <td className="p-2 border border-gray-600">{t.status}</td>
+                        <td className="p-2 border border-gray-600">
+                          {t.status}
+                        </td>
                         <td className="p-2 border border-gray-600">
                           {new Date(t.createdAt).toLocaleString()}
                         </td>
@@ -149,7 +159,10 @@ export default function AdminTicketsTable({
                       </tr>
                       {isExpanded && (
                         <tr className="bg-gray-700">
-                          <td colSpan={5} className="p-3 border border-gray-600">
+                          <td
+                            colSpan={5}
+                            className="p-3 border border-gray-600"
+                          >
                             <h4 className="font-semibold mb-1">Message:</h4>
                             <p>{t.message}</p>
                           </td>

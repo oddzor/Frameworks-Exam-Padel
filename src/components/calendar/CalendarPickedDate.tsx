@@ -24,11 +24,7 @@ export function makeDayComponent(bookings: Booking[]) {
     });
 
     return (
-      <Styled
-        {...rest}
-        day={day}
-        outsideCurrentMonth={outsideCurrentMonth}
-      />
+      <Styled {...rest} day={day} outsideCurrentMonth={outsideCurrentMonth} />
     );
   };
   return MyDay;

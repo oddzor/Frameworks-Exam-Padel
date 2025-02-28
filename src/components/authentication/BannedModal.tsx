@@ -14,8 +14,8 @@ export default function BannedModal({ reason, onClose }: BannedModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-      <div className="bg-white text-black p-6 rounded shadow-md w-full max-w-sm">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-gray-800 text-white p-6 rounded shadow-md w-full max-w-sm">
         <h2 className="text-xl font-semibold mb-4">Membership Cancelled</h2>
         <p className="mb-4">Reason: {reason}</p>
         <div className="flex justify-end space-x-2">
@@ -27,7 +27,7 @@ export default function BannedModal({ reason, onClose }: BannedModalProps) {
           </button>
           <button
             onClick={onClose}
-            className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+            className="bg-gray-500 px-3 py-1 rounded hover:bg-gray-600"
           >
             Close
           </button>

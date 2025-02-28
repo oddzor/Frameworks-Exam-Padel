@@ -22,11 +22,13 @@ export async function adminFetchAllUsers(): Promise<User[]> {
 }
 
 export async function adminFetchTickets(): Promise<SupportTicket[]> {
-  return getAllTickets(); 
+  return getAllTickets();
 }
 
 export async function adminDeleteBooking(bookingId: string): Promise<void> {
-  const confirmRes = await fetch(`${BOOKINGS_ENDPOINT}/${bookingId}`, { method: "DELETE" });
+  const confirmRes = await fetch(`${BOOKINGS_ENDPOINT}/${bookingId}`, {
+    method: "DELETE",
+  });
   if (!confirmRes.ok) {
     throw new Error("Failed to delete booking");
   }
@@ -48,7 +50,10 @@ export async function adminUpdateBooking(updated: Booking): Promise<Booking> {
   return updated;
 }
 
-export async function adminConfirmCancelMember(userId: string, reason: string): Promise<void> {
+export async function adminConfirmCancelMember(
+  userId: string,
+  reason: string
+): Promise<void> {
   const userRes = await fetch(`${USERS_ENDPOINT}/${userId}`);
   if (!userRes.ok) {
     throw new Error("Failed to fetch that user first");

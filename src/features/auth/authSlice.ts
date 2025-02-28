@@ -24,7 +24,12 @@ const initialState: AuthState = {
 };
 
 export const loginUser = createAsyncThunk<
-  { email: string; role: "admin" | "user"; banned: boolean; banReason?: string },
+  {
+    email: string;
+    role: "admin" | "user";
+    banned: boolean;
+    banReason?: string;
+  },
   { emailOrAdmin: string; password: string },
   { rejectValue: string }
 >("auth/loginUser", async (credentials, thunkAPI) => {
@@ -32,7 +37,9 @@ export const loginUser = createAsyncThunk<
     const ADMIN_USERNAME = import.meta.env.VITE_ADMIN_USERNAME || "admin";
     const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "admin";
 
-    if (credentials.emailOrAdmin.toLowerCase() === ADMIN_USERNAME.toLowerCase()) {
+    if (
+      credentials.emailOrAdmin.toLowerCase() === ADMIN_USERNAME.toLowerCase()
+    ) {
       if (credentials.password !== ADMIN_PASSWORD) {
         return thunkAPI.rejectWithValue("Invalid admin credentials");
       }
@@ -45,7 +52,10 @@ export const loginUser = createAsyncThunk<
       if (!foundUser) {
         return thunkAPI.rejectWithValue("No user found with that email");
       }
-      const match = await bcrypt.compare(credentials.password, foundUser.password);
+      const match = await bcrypt.compare(
+        credentials.password,
+        foundUser.password
+      );
       if (!match) {
         return thunkAPI.rejectWithValue("Incorrect password");
       }

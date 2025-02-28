@@ -14,7 +14,9 @@ export async function getAllTickets(): Promise<SupportTicket[]> {
   return res.json();
 }
 
-export async function createTicket(ticketData: Omit<SupportTicket, "_id">): Promise<SupportTicket> {
+export async function createTicket(
+  ticketData: Omit<SupportTicket, "_id">
+): Promise<SupportTicket> {
   const res = await fetch(TICKETS_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -26,7 +28,10 @@ export async function createTicket(ticketData: Omit<SupportTicket, "_id">): Prom
   return res.json();
 }
 
-export async function updateTicket(ticketId: string, updated: Partial<SupportTicket>): Promise<SupportTicket> {
+export async function updateTicket(
+  ticketId: string,
+  updated: Partial<SupportTicket>
+): Promise<SupportTicket> {
   const resGet = await fetch(`${TICKETS_ENDPOINT}/${ticketId}`);
   if (!resGet.ok) {
     throw new Error("Failed to fetch ticket before update");

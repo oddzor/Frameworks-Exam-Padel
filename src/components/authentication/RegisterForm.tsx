@@ -1,7 +1,12 @@
 import React from "react";
 import { RegisterFormProps } from "../../types";
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ email, password, onChange, onSubmit }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({
+  email,
+  password,
+  onChange,
+  onSubmit,
+}) => {
   return (
     <form className="space-y-4" onSubmit={onSubmit}>
       <div>

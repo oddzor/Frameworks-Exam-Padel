@@ -13,7 +13,10 @@ export default function HeaderAccountMenu() {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const [loginForm, setLoginForm] = useState({ emailOrAdmin: "", password: "" });
+  const [loginForm, setLoginForm] = useState({
+    emailOrAdmin: "",
+    password: "",
+  });
   const [showBannedModal, setShowBannedModal] = useState(false);
   const [banReason, setBanReason] = useState("");
 
@@ -23,7 +26,10 @@ export default function HeaderAccountMenu() {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowDropdown(false);
       }
     }
@@ -39,7 +45,12 @@ export default function HeaderAccountMenu() {
 
   async function handleLoginSubmit(e: React.FormEvent) {
     e.preventDefault();
-    dispatch(loginUser({ emailOrAdmin: loginForm.emailOrAdmin, password: loginForm.password }))
+    dispatch(
+      loginUser({
+        emailOrAdmin: loginForm.emailOrAdmin,
+        password: loginForm.password,
+      })
+    )
       .unwrap()
       .then((payload) => {
         const { role, banned, banReason: reason } = payload;
@@ -105,7 +116,10 @@ export default function HeaderAccountMenu() {
               </form>
               <hr className="my-2 border-gray-600" />
               <p className="text-sm mb-1">Don't have an account?</p>
-              <Link to="/login?mode=register" className="text-blue-400 hover:underline text-sm">
+              <Link
+                to="/login?mode=register"
+                className="text-blue-400 hover:underline text-sm"
+              >
                 Register here
               </Link>
             </>
@@ -124,7 +138,10 @@ export default function HeaderAccountMenu() {
       )}
 
       {showBannedModal && (
-        <BannedModal reason={banReason} onClose={() => setShowBannedModal(false)} />
+        <BannedModal
+          reason={banReason}
+          onClose={() => setShowBannedModal(false)}
+        />
       )}
     </div>
   );

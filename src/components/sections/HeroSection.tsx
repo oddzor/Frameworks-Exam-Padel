@@ -19,22 +19,31 @@ export default function HeroSection() {
 
   return (
     <section className="py-16 text-white bg-gray-900">
-      <div className="container flex flex-col items-center px-4 mx-auto md:flex-row ">
-        <div className="md:w-1/2">
+      <div className="container flex flex-col flex-wrap items-center px-4 mx-auto md:flex-row">
+        <div className="md:w-1/2 flex-shrink-0">
           <h1 className="mb-4 text-4xl font-bold">Welcome to Gokstad Padel</h1>
           <p className="mb-6 text-gray-300">
-            Sandefjord’s new pride and the most modern padel facility in Vestfold.
+            Sandefjord’s new pride and the most modern padel facility in
+            Vestfold.
           </p>
-          <p className="mb-6 text-gray-300"> If you are already a member, log in and/or continue to booking.</p>
+          <p className="mb-6 text-gray-300">
+            If you are already a member, log in and/or continue to booking.
+          </p>
           <div className="flex space-x-3">
-            <Link to="/login?mode=register">
-              <button className="px-5 py-2 text-white bg-blue-500 rounded shadow hover:bg-blue-600">
-                Account
-              </button>
-            </Link>
+            {!isLoggedIn && (
+              <Link to="/login?mode=register">
+                <button className="px-5 py-2 text-white bg-blue-500 rounded shadow hover:bg-blue-600">
+                  Account
+                </button>
+              </Link>
+            )}
             <button
               onClick={handleBookingClick}
-              className="px-5 py-2 text-blue-500 border border-blue-500 rounded shadow hover:bg-blue-500 hover:text-white"
+              className={
+                isLoggedIn
+                  ? "px-5 py-2 text-white bg-blue-500 rounded shadow hover:bg-blue-600"
+                  : "px-5 py-2 text-blue-500 border border-blue-500 rounded shadow hover:bg-blue-500 hover:text-white"
+              }
             >
               Booking
             </button>
@@ -44,7 +53,7 @@ export default function HeroSection() {
           <img
             src="/splash-image.jpg"
             alt="Splash"
-            className="h-auto max-w-5xl rounded shadow-lg"
+            className="h-auto w-full max-w-3xl rounded shadow-lg object-cover"
           />
         </div>
       </div>

@@ -6,7 +6,7 @@ import { Booking, Court } from "../../types";
 interface CreateAndEditBookingModalProps {
   isOpen: boolean;
   userEmail?: string;
-  createDate?: string;           
+  createDate?: string;
   existingBooking?: Booking;
   onClose: () => void;
   onSave: (updated: Booking) => Promise<void>;
@@ -49,7 +49,9 @@ export default function CreateAndEditBookingModal({
       if (existingBooking.players === 4) {
         setCoPlayers(existingBooking.coPlayers || ["", "", ""]);
       } else {
-        setCoPlayers(existingBooking.coPlayers?.length ? existingBooking.coPlayers : [""]);
+        setCoPlayers(
+          existingBooking.coPlayers?.length ? existingBooking.coPlayers : [""]
+        );
       }
     } else {
       setDate(createDate || dayjs().format("YYYY-MM-DD"));
@@ -157,7 +159,9 @@ export default function CreateAndEditBookingModal({
     finalBooking.coPlayers =
       players === 4 ? coPlayers.slice(0, 3) : coPlayers.slice(0, 1);
 
-    onSave(finalBooking).catch((err) => console.error("Save booking error:", err));
+    onSave(finalBooking).catch((err) =>
+      console.error("Save booking error:", err)
+    );
   }
 
   return (

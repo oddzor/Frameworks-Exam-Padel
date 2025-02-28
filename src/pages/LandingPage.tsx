@@ -5,14 +5,12 @@ import FeatureSection from "../components/sections/MainCards";
 export default function LandingPage() {
   const [isLoadingImages, setIsLoadingImages] = useState(true);
 
-
   const imagesToLoad = [
     "/splash-image.jpg",
     "/images/aboutpadel-img.jpg",
     "/images/membership-img.jpg",
     "/images/students-img.jpg",
   ];
-
 
   useEffect(() => {
     let loadedCount = 0;

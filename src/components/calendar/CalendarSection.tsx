@@ -16,7 +16,6 @@ export default function CalendarSection({
   onChange,
   bookings = [],
 }: CalendarSectionProps) {
-
   const MyGreenDay = makeDayComponent(bookings);
 
   return (
