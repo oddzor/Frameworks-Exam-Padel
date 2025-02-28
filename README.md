@@ -106,7 +106,7 @@ If you execute `npm run dev` again, it will abort seeding when the checks for da
 
 ### General Functionality
 
-#### <u>Booking Logic</u>
+#### <ins>Booking Logic</ins>
 
 There are 6 courts, available from 10AM to 10PM every day. Each court is available for 2 or 4 players. If a user books a court, a request is sent to check booking data to ensure that the court is available at that time and date.
 
