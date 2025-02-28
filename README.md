@@ -174,7 +174,7 @@ Portal to send support requests, for example if you have gotten banned/cancelled
 
 ## Testing
 
-#### Testing is done through vitest and run via `npm test`, alternatively the tests could be run through a vitest plugin for IDE of choice. 
+Testing is done through vitest and run via `npm test`, alternatively the tests could be run through a vitest plugin for IDE of choice. 
 The tests are mainly focused on data flows and ensuring that the mock calls from the API endpoints handle correctly.
 
 #### <ins>adminsAPI</ins>
