@@ -106,9 +106,43 @@ If you execute `npm run dev` again, it will abort seeding when the checks for da
 
 ### General Functionality
 
-#### <u>State Management With Redux</u>
+#### <u>Booking Logic</u>
+
+There are 6 courts, available from 10AM to 10PM every day. Each court is available for 2 or 4 players. If a user books a court, a request is sent to check booking data to ensure that the court is available at that time and date.
+
+If the court is booked at that time and date, the user is not provided that timeslot in the dropdown menu. There is also added redundancy to "suggest next available time" if somehow the user is able to force a booking for an occupied timeslot. 
+
+When selecting a booking, and selecting 2 or 4 players, you are given input fields to fill in "Main player" and "Extra player(s)".
+
+#### <u>Users Logic</u>
+
+Users may self register, upon registration the user is given a role to indicate their "accesss rights", this will ensure that the user may only access the pages and routes that are intended, handled via `authSlice`. An example of a blocked route is if the user tries to manually route to /admin, they will be flagged as unauthorized and redirect to homepage.
+
+#### <u>Tickets Logic</u>
+
+Users may, for any reason, send a support ticket. For example if an admin uses their rights to "cancel membership", and the cancelled user tries to log in, they can only access the contact page to send a ticket, this ticket will be sent to the admin panel tickets tab, where the admin can read the case and close or keep open the ticket.
+
+
+#### <u>Admin Logic</u>
+
+The admin dashboard contains:
+
+- All bookings
+- All users
+- Tickets
+- Filtering
+
+This functionality allows the admin unilateral control of all things related to the webpage. The admin can edit bookings, control user access, cancel memberships (which will flag the users data with a `banned: boolean`, restricting route access).
+
+
+### Technical Functionality
+
+
+
+#### <u>AuthState Management With Redux</u>
 
 The authentication system keeps track of various details such as whether the user is logged in, their role (admin or regular user), and if they are banned. This is managed using a Redux slice, which provides functions to log in (loginUser), log out (logout), and restore a previously saved authentication state (restoreAuthState).
+
 
 #### <u>API Management</u>
 
