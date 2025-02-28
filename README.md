@@ -114,16 +114,16 @@ If the court is booked at that time and date, the user is not provided that time
 
 When selecting a booking, and selecting 2 or 4 players, you are given input fields to fill in "Main player" and "Extra player(s)".
 
-#### <u>Users Logic</u>
+#### <ins>Users Logic</ins>
 
 Users may self register, upon registration the user is given a role to indicate their "accesss rights", this will ensure that the user may only access the pages and routes that are intended, handled via `authSlice`. An example of a blocked route is if the user tries to manually route to /admin, they will be flagged as unauthorized and redirect to homepage.
 
-#### <u>Tickets Logic</u>
+#### <ins>Tickets Logic</ins>
 
 Users may, for any reason, send a support ticket. For example if an admin uses their rights to "cancel membership", and the cancelled user tries to log in, they can only access the contact page to send a ticket, this ticket will be sent to the admin panel tickets tab, where the admin can read the case and close or keep open the ticket.
 
 
-#### <u>Admin Logic</u>
+#### <ins>Admin Logic</ins>
 
 The admin dashboard contains:
 
@@ -139,34 +139,34 @@ This functionality allows the admin unilateral control of all things related to 
 
 
 
-#### <u>AuthState Management With Redux</u>
+#### <ins>AuthState Management With Redux</ins>
 
 The authentication system keeps track of various details such as whether the user is logged in, their role (admin or regular user), and if they are banned. This is managed using a Redux slice, which provides functions to log in (loginUser), log out (logout), and restore a previously saved authentication state (restoreAuthState).
 
 
-#### <u>API Management</u>
+#### <ins>API Management</ins>
 
 All CRUD operations are handled in separate files for their respective endpoints, direct connection to the specified crudcrud endpoint from the env file. Serverless operation, but crudcrud endpoint mandatory for app to function.
 
 ### Pages
 
-#### <u>LandingPage</u>
+#### <ins>LandingPage</ins>
 
 Hero section with some information cards, will allow users to register or log in with some state management for displaying buttons, from here you can navigate to all sections easily.
 
-#### <u>LoginPage</u>
+#### <ins>LoginPage</ins>
 
 Login form that sends or checks credentials to crudcrud endpoint (or if admin, from the env), and on success, manages state providing a role, depending on what type of user logged in.
 
-#### <u>AdminPage</u>
+#### <ins>AdminPage</ins>
 
 Admin dashboard that provides management of user accounts, bookings, support tickets. Admin has full autonomy to CRUD operations on all users in the system.
 
-#### <u>BookingsPage</u>
+#### <ins>BookingsPage</ins>
 
 Calendar view imported from Material UI, user selects a date from calendar via doubleclick, booking modal is triggered and the user can select amount of players, what time and how many players. Logic is implemented to not list already booked Courts at the same time, but there is a fallback that will suggest another time if the user selects a time that is already booked.
 
-#### <u>ContactPage</u>
+#### <ins>ContactPage</ins>
 
 Portal to send support requests, for example if you have gotten banned/cancelled, you will be able to access this portion of the webpage to inform admin that you have issues.
 
@@ -174,21 +174,21 @@ Portal to send support requests, for example if you have gotten banned/cancelled
 
 ## **Testing**
 
-### <u>adminsAPI</u>
+### <ins>adminsAPI</ins>
 
 - Ensures admins can fetch all bookings successfully.
 - Verifies that an admin can update a booking correctly.
 - Confirms that an admin can delete a booking without errors.
 
 
-### <u>authSlice</u>
+### <ins>authSlice</ins>
 
 - Checks that the auth state initializes correctly.
 - Ensures that login updates the state (pending, success, failure).
 - Confirms that logout resets the state.
 - Verifies that restoring auth state works properly.
 
-### <u>bookingsAPI</u>
+### <ins>bookingsAPI</ins>
 
 - Ensures users can create a booking successfully.
 - Confirms that updating a booking works with a valid _id.
